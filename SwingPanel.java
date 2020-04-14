@@ -26,7 +26,9 @@ public class SwingPanel extends JPanel implements ActionListener {
     private double deltaY = Math.random() / 20;
     private double deltaAngle = 2 * Math.PI / 180;
     private double phase = 0.0;
-    private Shape shape;
+    private Shape shape1;
+    private Shape shape2;
+    private Shape shape3;
 
     private Color color = Color.red;
     private Polygon3D poly;
@@ -98,12 +100,18 @@ public class SwingPanel extends JPanel implements ActionListener {
 //        double uly = this.centerY - this.radius;
 //        Ellipse2D.Double circle = new Ellipse2D.Double(ulx, uly, d, d);
 //        Shape shape = transform.createTransformedShape(circle);
-        this.shape = poly.getShape();
+        this.shape1 = poly.getShape();
+        this.shape2 = poly.getShape2();
+      //  this.shape3 = poly.getShape3();
 
-        Shape s = transform.createTransformedShape(this.shape);
+        Shape s = transform.createTransformedShape(this.shape1);
+        Shape t = transform.createTransformedShape(this.shape2);
+     //   Shape r = transform.createTransformedShape(this.shape3);
 
         g2D.setColor(this.getColor());
         g2D.fill(s);
+        g2D.fill(t);
+    //    g2D.fill(r);
     } // paintComponent( Graphics )
 
     private Shape makeStar(int points,

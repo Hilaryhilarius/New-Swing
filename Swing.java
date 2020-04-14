@@ -34,13 +34,13 @@ public class Swing extends JFrame {
         pane.add(panel);
 
         for (int i = 0; i < NUMBER_OF_COLORS; i++) {
-            Color color = makeColor(224);
+            Color color = makeColor(64, 128);
             bgPalette.add(color);
         } // for
         this.panel.setBackground(bgPalette.get(0));
 
         for (int i = 0; i < NUMBER_OF_COLORS; i++) {
-            Color color = makeColor(224);
+            Color color = makeColor(32, 224);
             fgPalette.add(color);
         } // for
         this.panel.setColor(fgPalette.get(0));
@@ -71,11 +71,10 @@ public class Swing extends JFrame {
         this.setVisible(true);
     } // Swing()
 
-    public final Color makeColor(int hi) {
-        int rnog = this.rng.nextInt(hi);
-        int red = this.rng.nextInt(rnog);
-        int green = this.rng.nextInt(rnog);
-        int blue = this.rng.nextInt(rnog);
+    public final Color makeColor(int lo, int hi) {
+        int red = lo + this.rng.nextInt(hi);
+        int green = lo + this.rng.nextInt(hi);
+        int blue = lo + this.rng.nextInt(hi);
         Color color = new Color(red, green, blue);
         return color;
     } // makeColor( int, int )
