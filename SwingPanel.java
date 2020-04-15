@@ -10,6 +10,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.GeneralPath;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SwingPanel extends JPanel implements ActionListener {
 // a SwingPanel is a kind of JPanel
@@ -28,12 +30,13 @@ public class SwingPanel extends JPanel implements ActionListener {
     private double phase = 0.0;
     private Shape shape1;
     private Shape shape2;
-    private Shape shape3;
+    private List<Shape> shape3 = new ArrayList<>();
 
     private Color color = Color.red;
     private Polygon3D poly;
     private Matrix spinner;
-
+    
+    
     public SwingPanel() {
         Timer timer = new Timer(20, this);
         timer.start();
@@ -102,16 +105,24 @@ public class SwingPanel extends JPanel implements ActionListener {
 //        Shape shape = transform.createTransformedShape(circle);
         this.shape1 = poly.getShape();
         this.shape2 = poly.getShape2();
-      //  this.shape3 = poly.getShape3();
+        this.shape3 = poly.getShape3();
+        
+        
 
         Shape s = transform.createTransformedShape(this.shape1);
         Shape t = transform.createTransformedShape(this.shape2);
-     //   Shape r = transform.createTransformedShape(this.shape3);
+        
 
         g2D.setColor(this.getColor());
         g2D.fill(s);
         g2D.fill(t);
-    //    g2D.fill(r);
+        
+//        for (int i = 0; i < this.shape3.size();i++){
+  //          Shape r = this.shape3.get(i);
+    //        Shape r1 = transform.createTransformedShape(r);
+      //      g2D.fill(r1);
+        //}
+
     } // paintComponent( Graphics )
 
     private Shape makeStar(int points,
